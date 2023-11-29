@@ -1,4 +1,4 @@
 #!/usr/bin/python3
-for n1 in range(10):
-    for n2 in range(n1 + 1, 10):
-        print("{:d}{:d}".format(n1, n2), end=", " if n1 != 9 or n2 != 8 else "\n")
+for n in range(10):
+    for k in range(n + 1, 10):
+        print("{:d}{:d}".format(n, k), end="\n" if n == 8 and k == 9 else ", ")
