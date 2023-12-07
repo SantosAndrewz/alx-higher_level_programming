@@ -10,4 +10,7 @@ def roman_to_int(roman_string):
             conv = conv + num[y]
         else:
             conv = conv - num[y]
-    return conv
+    if 1 <= conv <= 3999:
+        return conv
+    else:
+        return 0
