@@ -10,4 +10,4 @@ def weight_average(my_list=[]):
     if wgt_sum == 0:
         return 0
     else:
-        return (wgt_score_sum / wgt_sum)      
+        return (wgt_score_sum / wgt_sum)
