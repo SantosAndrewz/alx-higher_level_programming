@@ -1,4 +1,7 @@
-#!/bin/python3
+#!/usr/bin/python3
 
-class square: """creates a class- square"""
+"""Creates and defines a class Square."""
+
+class Square:
+    """Creates a class - square."""
     pass
