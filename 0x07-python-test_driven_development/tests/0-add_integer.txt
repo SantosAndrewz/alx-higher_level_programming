@@ -11,23 +11,25 @@ class Test_AddInteger(unittest.TestCase):
     Test cases for the function- add_integer.
     """
 
-    def test_integers_input(self):
+    def test_regular_integers_input(self):
         """
         Tests for correct sum when 2 integers are entered.
         """
 
         self.assertEqual(add_integer(2, 3), 5)
         self.assertEqual(add_integer(-2, 3), 1)
+        self.assertEqual(add_integer(-2, -3), -5)
 
-    def test_floats_input(self):
+    def test_float_casting(self):
         """
-        Tests for correct sum when 2 float digits are entered.
+        Tests for correct sum when floats digits are entered.
         """
 
-        self.assertEqual(add_integer(2.5, 3.5), 6)
+        self.assertEqual(add_integer(2.5, 3.5), 5)
         self.assertEqual(add_integer(-2.3, 3.3), 1)
+        self.assertEqual(add_integer(-2, 3.5), 1)
 
-    def test_mixed_input(self):
+    def test_non_integer_input(self):
         """
         Tests for correct sum when float and integer are entered.
         """
@@ -37,17 +39,23 @@ class Test_AddInteger(unittest.TestCase):
         self.assertEqual(add_integer(3, 2.5), 5)
         self.assertEqual(add_integer(-2, 2.5), 0)
 
-    def test_default_value_of_b_used(self):
+    def test_missing_arguments(self):
         """
         Tests for correct sum when only value of a is entered.
         """
 
         self.assertEqual(add_integer(2), 100)
-        self.assertEqual(add_integer(-2.5), 95)
+        with self.assertRaises(TypeError) as entries:
+            add_integer(None, 2)
+        self.assertEqual(str(entries.exception), "a must be an integer")
 
-    def test_input_not_number(self):
+        with self.assertRaises(TypeError) as entries:
+            add_integer(None)
+        self.assertEqual(str(entries.exception), "a must be an integer")
+
+    def test_non_integer_input(self):
         """
-        Tests for correct raise of TypeError when non-number are entered.
+        Tests for correct raise of TypeError when non-integer are entered.
         """
 
         with self.assertRaises(TypeError) as entries:
@@ -55,9 +63,17 @@ class Test_AddInteger(unittest.TestCase):
         self.assertEqual(str(entries.exception), "b must be an integer")
 
         with self.assertRaises(TypeError) as entries:
-            add_integer(None)
+            add_integer(None, 2)
+        self.assertEqual(str(entries.exception), "a must be an integer")
+
+        with self.assertRaises(TypeError) as entries:
+            add_integer(2, [2])
+        self.assertEqual(str(entries.exception), "b must be an integer")
+
+        with self.assertRaises(TypeError) as entries:
+            add_integer((2,), 2)
         self.assertEqual(str(entries.exception), "a must be an integer")
 
 
 if __name__ == "__main__":
-    unittest.main()-
+    unittest.main()
