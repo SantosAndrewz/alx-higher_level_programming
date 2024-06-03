@@ -1,79 +1,113 @@
-#!/usr/bin/python3
-"""
-unittests for function add_integer.
-"""
-import unittest
-from add_integer import add_integer
+===========================
+How to use 0-add_integer.py
+===========================
 
+This module tests the fanctionality of ''add_integer(a, b=98)'' function.
 
-class Test_AddInteger(unittest.TestCase):
-    """
-    Test cases for the function- add_integer.
-    """
+Usage
+=====
 
-    def test_regular_integers_input(self):
-        """
-        Tests for correct sum when 2 integers are entered.
-        """
+''add_integer(...)'' takes 2 integers and returns their sum. It is equivalent to using
+the ''+'' operator.
 
-        self.assertEqual(add_integer(2, 3), 5)
-        self.assertEqual(add_integer(-2, 3), 1)
-        self.assertEqual(add_integer(-2, -3), -5)
+For Numbers(integers)
+=====================
 
-    def test_float_casting(self):
-        """
-        Tests for correct sum when floats digits are entered.
-        """
+::
 
-        self.assertEqual(add_integer(2.5, 3.5), 5)
-        self.assertEqual(add_integer(-2.3, 3.3), 1)
-        self.assertEqual(add_integer(-2, 3.5), 1)
+    >>> add_integer = __import__('0-add_integer').add_integer
+    >>> add_integer(2, 8)
+    10
 
-    def test_non_integer_input(self):
-        """
-        Tests for correct sum when float and integer are entered.
-        """
+::
 
-        self.assertEqual(add_integer(2.5, 3), 5)
-        self.assertEqual(add_integer(-2.5, 3), 0)
-        self.assertEqual(add_integer(3, 2.5), 5)
-        self.assertEqual(add_integer(-2, 2.5), 0)
+    >>> add_integer(-2, 8)
+    6
 
-    def test_missing_arguments(self):
-        """
-        Tests for correct sum when only value of a is entered.
-        """
+For floating numbers.
+=====================
 
-        self.assertEqual(add_integer(2), 100)
-        with self.assertRaises(TypeError) as entries:
-            add_integer(None, 2)
-        self.assertEqual(str(entries.exception), "a must be an integer")
+Floats should be casted before their addition.
 
-        with self.assertRaises(TypeError) as entries:
-            add_integer(None)
-        self.assertEqual(str(entries.exception), "a must be an integer")
+::
 
-    def test_non_integer_input(self):
-        """
-        Tests for correct raise of TypeError when non-integer are entered.
-        """
+    >>> add_integer(2.5, 8.5)
+    10
 
-        with self.assertRaises(TypeError) as entries:
-            add_integer(2, "test")
-        self.assertEqual(str(entries.exception), "b must be an integer")
+::
+    >>> add_integer(-2.5, 8.5)
+    6
 
-        with self.assertRaises(TypeError) as entries:
-            add_integer(None, 2)
-        self.assertEqual(str(entries.exception), "a must be an integer")
+For Non-numbers
+===============
 
-        with self.assertRaises(TypeError) as entries:
-            add_integer(2, [2])
-        self.assertEqual(str(entries.exception), "b must be an integer")
+''add_integer()'' only takes up floats or integers. A TypeError is raised if
+a non-integer or non-float is entered.
 
-        with self.assertRaises(TypeError) as entries:
-            add_integer((2,), 2)
-        self.assertEqual(str(entries.exception), "a must be an integer")
+::
 
+    >>> add_integer('num', 8)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
 
-if __name__ == "__main__":
-    unittest.main()
+::
+
+    >>> add_integer(2, 'num')
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+For NaN numbers
+===============
+
+A ValueError is raised when a NaN number is passes to the function.
+
+::
+
+    >>> add_integer(float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+::
+
+    >>> add_integer(-2, float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+For Infinity values
+===================
+
+An OverflowError is raised when infinity numbers are entered.
+
+::
+
+    >>> add_integer(float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+::
+
+    >>> add_integer(-2, float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+No arguments given
+==================
+
+Raises a TypeError when no arguments are provided or when a is missing.
+
+::
+
+    >>> add_integer(None)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+::
+
+    >>> add_integer(2)
+    100
+
+::
+
+    >>> add_integer(None, 8)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
