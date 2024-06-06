@@ -39,7 +39,7 @@ of integers/floats')
         raise TypeError('Each row of the matrix must have the same size')
 
     # checks for type of div.
-    if not isinstance(div, (int, float)):
+    if not isinstance(div, (int, float)) or div != div:
         raise TypeError('div must be a number')
 
     # Diviaor
