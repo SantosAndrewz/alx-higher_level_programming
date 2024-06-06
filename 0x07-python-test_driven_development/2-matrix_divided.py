@@ -14,12 +14,13 @@ def matrix_divided(matrix, div):
 
     Raises:
         TypeError: If matrix is not a lists of integers and/or floats.
-        TypeError: If each row of the matrix is not of the same size as the others.
+        TypeError: If rows of the matrix have different sizes.
         TypeError: If div is not a float or integer.
         ZeroDivisionError: If div is equal to 0.
 
     Return:
-        List of lists of floats: each element divided by the div and rounded to decimal places,
+        List of lists of floats: each element divided by the div and rounded
+                                 to decimal places,
     '''
 
     # Checks if matrix is a list of lists of integers or floats
@@ -30,7 +31,8 @@ of integers/floats')
     if not matrix or any(not row for row in matrix):
         raise TypeError('matrix must be a matrix (list of lists) \
 of integers/floats')
-    if not all(all(isinstance(e, (int, float)) for e in row) for row in matrix):
+    if not all(all(isinstance(e, (int, float)) for e in row) for row
+               in matrix):
         raise TypeError('matrix must be a matrix (list of lists) \
 of integers/floats')
     # checks if each row in the matrix is the same size as the others.
@@ -45,6 +47,5 @@ of integers/floats')
     # Diviaor
     if div == 0:
         raise ZeroDivisionError('division by zero')
-
 
     return ([list(map(lambda x: round(x / div, 2), row)) for row in matrix])
