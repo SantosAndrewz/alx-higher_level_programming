@@ -1,0 +1,67 @@
+===========================
+How to Use 3-say_my_name.py
+===========================
+
+This module demonstrates the use of function ''say_my_name(first_name, last_name="")''
+
+
+Usage
+=====
+
+''say_my_name(...)'' prints 'My name is <first name> <last name>'
+
+Tests
+=====
+
+::
+
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Regular tests
+
+::
+
+
+	>>> say_my_name("John", "Sande")
+	My name is John Sande
+
+::
+
+
+	>>> say_my_name("John")
+	My name is John
+
+Invalid names
+
+TypeError is raised is a non string entry is put.
+
+::
+
+
+	>>> say_my_name(2, "Sande")
+	Traceback (most recent call last):
+	TypeError: first_name must be a string
+
+
+::
+
+
+        >>> say_my_name("John", None)
+        Traceback (most recent call last):
+        TypeError: last_name must be a string
+
+
+::
+
+
+        >>> say_my_name("John", 2)
+        Traceback (most recent call last):
+        TypeError: last_name must be a string
+
+
+::
+
+
+        >>> say_my_name(None, "Sande")
+        Traceback (most recent call last):
+        TypeError: first_name must be a string
