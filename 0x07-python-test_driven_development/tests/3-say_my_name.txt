@@ -65,3 +65,9 @@ TypeError is raised is a non string entry is put.
         >>> say_my_name(None, "Sande")
         Traceback (most recent call last):
         TypeError: first_name must be a string
+
+::
+
+	>>> say_my_name()
+	Traceback (most recent call last):
+	TypeError: say_my_name() missing 1 required positional argument: 'first_name'
