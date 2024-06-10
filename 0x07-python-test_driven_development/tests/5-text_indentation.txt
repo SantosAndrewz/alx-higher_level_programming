@@ -1,0 +1,60 @@
+=============================
+How to use 5-text_indentation
+=============================
+
+The module demonstrates and tests for the functionality of function ''text_indentation(text)''
+
+
+Usage
+=====
+
+''text_indentation(...)'' prints the text with two new lines after each of the characters: '.', '?' and ':'.
+
+Tests
+=====
+
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Regular tests
+=============
+
+::
+
+
+	>>> text_indentation('Hey John. Are you fine? Say this: 1, 2, 3, 4, 5')
+	Hey John.
+	<BLANKLINE>
+	Are you fine?
+        <BLANKLINE>
+	Say this:
+        <BLANKLINE>
+	1, 2, 3, 4, 5
+
+
+Invalid text
+============
+
+TypeError is raised if text is not a string.
+
+::
+
+
+	>>> text_indentation(12)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+
+::
+
+
+	>>> text_indentation({"name": "John"})
+        Traceback (most recent call last):
+        TypeError: text must be a string
+
+
+::
+
+
+	>>> text_indentation(["name", "John", "Alex"])
+        Traceback (most recent call last):
+        TypeError: text must be a string
