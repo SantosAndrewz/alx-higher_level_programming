@@ -30,4 +30,9 @@ def text_indentation(text):
             while x + 1 < len(text) and text[x + 1] == ' ':
                 x += 1
         x += 1
-    print(pr.strip())
+    lines = pr.split('\n')
+    for line in lines:
+        if line.strip():
+            print(line.strip())
+        else:
+            print()

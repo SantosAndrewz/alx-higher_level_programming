@@ -30,6 +30,19 @@ Regular tests
         <BLANKLINE>
 	1, 2, 3, 4, 5
 
+::
+
+
+        >>> text_indentation('Hello. John')
+        Hello.
+	<BLANKLINE>
+	John
+
+::
+
+
+	>>> text_indentation('Hello John')
+	Hello John
 
 Invalid text
 ============
@@ -58,3 +71,12 @@ TypeError is raised if text is not a string.
 	>>> text_indentation(["name", "John", "Alex"])
         Traceback (most recent call last):
         TypeError: text must be a string
+
+For missing arguments
+
+::
+
+
+        >>> text_indentation()
+        Traceback (most recent call last):
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
