@@ -32,7 +32,5 @@ def text_indentation(text):
         x += 1
     lines = pr.split('\n')
     for line in lines:
-        if line.strip():
-            print(line.strip())
-        else:
-            print()
+        print(line.strip())
+    return None
