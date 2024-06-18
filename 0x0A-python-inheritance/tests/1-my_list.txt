@@ -1,0 +1,72 @@
+Use of 1-my_list.py
+===================
+
+Module defines a class ''MyList'' that inherits from the class 'list'.
+
+Methods:
+========
+
+print_sorted(self):
+	Prints the list in ascending order assuming all elements are of the int type.
+
+Tests
+=====
+Import the class from the module under test.
+::
+
+
+	>>> MyList = __import__('1-my_list').MyList
+
+# Creating an instance of MyList class
+
+::
+
+	>>> my_list = MyList()
+	>>> my_list
+	[]
+
+# Verying that my_list is an instance of the list
+
+::
+
+	>>> isinstance(my_list, list)
+	True
+
+# Appends elements to my list.
+
+::
+
+	>>> my_list.append(6)
+	>>> my_list.append(7)
+	>>> my_list
+	[6, 7]
+
+# Prints the sorted list.
+
+::
+
+	>>> my_list.print_sorted()
+	[6, 7]
+
+# append a negative number to the list.
+
+::
+
+	>>> my_list.append(-1)
+	>>> my_list.print_sorted()
+	[-1, 6, 7]
+
+# creates and prints a blank instance of MyList
+
+::
+
+	>>> blank_list = MyList()
+	>>> blank_list.print_sorted()
+	[]
+
+# Original list remains unchanged
+
+::
+
+	>>> my_list
+	[6, 7, -1]
