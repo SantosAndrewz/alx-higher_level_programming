@@ -1,0 +1,119 @@
+Use of 7-base_geometry.py
+=========================
+
+Module defines use of class ''BaseGeometry'' with methods to calculate area
+and validate integers.
+
+Tests
+=====
+
+Import the class from the module under test.
+
+::
+
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+# Creating an instance of BaseGeometry class.
+
+::
+
+	>>> bg = BaseGeometry()
+
+# Test area method for raise of an Exception
+
+::
+
+	>>> bg.area()
+	Traceback (most recent call last):
+	Exception: area() is not implemented
+
+Verifying that instance created is an instance of BaseGeometry
+
+::
+
+	>>> bg = BaseGeometry()
+	>>> isinstance(bg, BaseGeometry)
+	True
+
+Test integer_validator with:
+============================
+
+Regular test values
+
+::
+
+	>>> bg.integer_validator('age', 2)
+	>>> print('age is valid')
+	age is valid
+
+tuple
+
+::
+
+	>>> bg.integer_validator('age', (2,))
+	Traceback (most recent call last):
+	TypeError: age must be an integer
+
+list
+
+::
+
+        >>> bg.integer_validator('age', [2])
+        Traceback (most recent call last):
+        TypeError: age must be an integer
+
+String
+
+::
+
+        >>> bg.integer_validator('age', '2')
+        Traceback (most recent call last):
+        TypeError: age must be an integer
+
+Boolean
+
+::
+
+        >>> bg.integer_validator('age', True)
+        Traceback (most recent call last):
+        TypeError: age must be an integer
+
+Set
+
+::
+
+        >>> bg.integer_validator('age', {1, 2})
+        Traceback (most recent call last):
+        TypeError: age must be an integer
+
+None
+
+::
+
+        >>> bg.integer_validator('age', None)
+        Traceback (most recent call last):
+        TypeError: age must be an integer
+
+tuple
+
+::
+
+        >>> bg.integer_validator('age', (2,))
+        Traceback (most recent call last):
+        TypeError: age must be an integer
+
+Negative integer
+
+::
+
+        >>> bg.integer_validator('age', -2)
+        Traceback (most recent call last):
+        ValueError: age must be greater than 0
+
+Zero
+
+::
+
+        >>> bg.integer_validator('age', 0)
+        Traceback (most recent call last):
+        ValueError: age must be greater than 0
