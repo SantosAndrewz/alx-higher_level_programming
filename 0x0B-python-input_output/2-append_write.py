@@ -12,4 +12,4 @@ def append_write(filename="", text=""):
     '''
 
     with open(filename, 'a', encoding='utf-8') as fn:
-        return(fn.write(text))
+        return (fn.write(text))
